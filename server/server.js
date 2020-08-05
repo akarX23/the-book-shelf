@@ -15,13 +15,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client/build")));
 const { auth } = require("./Middlewares/auth");
 
+app.use(express.static("client/build"));
+
 //Models
 const User = require("./Models/user");
 const Book = require("./Models/book");
 
 // Connect MongoDB at default port 27017.
 mongoose.connect(
-  config.DATABASE,
+  "mongodb+srv://akarX:akarx1234@bookshelf.9s1vi.mongodb.net/bookshelf?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -201,6 +203,13 @@ app.delete("/api/delete_book", (req, res) => {
     });
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  const path = require("path");
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+}
 
 const port = process.env.port || 5000;
 app.listen(port, () => {
