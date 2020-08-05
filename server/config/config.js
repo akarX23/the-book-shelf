@@ -1,7 +1,7 @@
 const config = {
   production: {
     SECRET: process.env.SECRET,
-    DATABASE: MONGODB_URI,
+    DATABASE: process.env.MONGODB_URI,
   },
   default: {
     SECRET: "SUPERSECRETPASSWORD123",
@@ -10,5 +10,6 @@ const config = {
 };
 
 exports.get = function get(env) {
+  console.log(env);
   return config[env] || config.default;
 };
