@@ -23,7 +23,7 @@ const Book = require("./Models/book");
 
 // Connect MongoDB at default port 27017.
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017",
+  process.env.MONGODB_URI || "mongodb://localhost:27017/bookShelf",
   {
     useNewUrlParser: true,
     useCreateIndex: true,
