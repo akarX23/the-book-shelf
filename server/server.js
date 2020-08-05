@@ -13,7 +13,6 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.json());
 app.use(cookieParser());
 const { auth } = require("./Middlewares/auth");
-const path = require("path");
 
 app.use(express.static("client/build"));
 
