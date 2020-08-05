@@ -1,7 +1,8 @@
 const config = {
   production: {
     SECRET: process.env.SECRET,
-    DATABASE: process.env.MONGODB_URI,
+    DATABASE:
+      "mongodb+srv://akarX:akarx1234@bookshelf.9s1vi.mongodb.net/bookshelf?retryWrites=true&w=majority",
   },
   default: {
     SECRET: "SUPERSECRETPASSWORD123",
