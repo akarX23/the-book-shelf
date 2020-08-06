@@ -116,15 +116,15 @@ class EditReview extends Component {
 
   renderForm() {
     return (
-      <div className="add-review-form-container">
+      <div className="add-review-container">
         {this.props.bookData.review ? (
           this.props.bookData.review.delete ? (
             <div className="del-message">Post deleted. Redirecting you....</div>
           ) : null
         ) : null}
-        <form onSubmit={this.editReview}>
-          <h2>Edit Review</h2>
-          <div className="form-input-full">
+        <h2>Edit Review</h2>
+        <div className="add-review-form">
+          <form onSubmit={this.editReview}>
             <Input
               {...this.state.name}
               onchange={(event) =>
@@ -137,31 +137,27 @@ class EditReview extends Component {
                 this.handleInputChange(event, this.state.author)
               }
             />
-          </div>
-          <Input
-            {...this.state.review}
-            onchange={(event) =>
-              this.handleInputChange(event, this.state.review)
-            }
-          />
-          <div className="add-book-info">
-            <div className="add-rating">
+            <Input
+              {...this.state.review}
+              onchange={(event) =>
+                this.handleInputChange(event, this.state.review)
+              }
+            />
+            <div className="add-review-info">
               <Input
                 {...this.state.rating}
                 onchange={(event) =>
                   this.handleInputChange(event, this.state.rating)
                 }
               />
-            </div>
-            <div className="add-pages">
+
               <Input
                 {...this.state.pages}
                 onchange={(event) =>
                   this.handleInputChange(event, this.state.pages)
                 }
               />
-            </div>
-            <div className="add-price">
+
               <Input
                 {...this.state.price}
                 onchange={(event) =>
@@ -169,21 +165,21 @@ class EditReview extends Component {
                 }
               />
             </div>
-          </div>
-          <div className="edit-review-buttons">
-            <button type="submit" className="edit-review-submit">
-              Edit Review
-            </button>
-            <button
-              type="button"
-              onClick={this.deleteReview}
-              className="delete-review-submit"
-            >
-              Delete
-            </button>
-          </div>
-          <div className="error">{this.state.error}</div>
-        </form>
+            <div className="edit-review-buttons">
+              <button type="submit" className="edit-review-submit">
+                Edit Review
+              </button>
+              <button
+                type="button"
+                onClick={this.deleteReview}
+                className="delete-review-submit"
+              >
+                Delete
+              </button>
+            </div>
+            <div className="error">{this.state.error}</div>
+          </form>
+        </div>
       </div>
     );
   }
